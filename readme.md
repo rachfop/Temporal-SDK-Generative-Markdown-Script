@@ -1,6 +1,6 @@
 # Generate md sdk
 
-Generate Markdown SDK is a script to generate templatized SKD markdown files for the language of your choice.
+Generate Markdown SDK is a script to generate templatized SDK markdown files for the language of your choice.
 
 ## Temporal SDK
 
