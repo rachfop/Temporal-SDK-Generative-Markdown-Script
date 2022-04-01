@@ -9,9 +9,18 @@ def cap_last_word(self):
     return " ".join(self.capitalize().split()[:-1]) + " " + self.split()[-1].title()
 
 
+with open(f"{language.lower()}/index.md", "w") as index:
+    index.write(
+        f"""---
+id: index
+title: {language.capitalize()} SDK
+---
+- [Getting started](overview)\n"""
+    )
+
 topic_list = open("topic-list.txt").read().split(",")
 topic_list.sort()
-counter = 0
+counter = 2
 for topic in topic_list:
     renamed_topic = str(topic).replace("go", language).replace("'", "").replace(" ", "")
     capped_last_word = cap_last_word(renamed_topic.replace("-", " "))
@@ -25,12 +34,14 @@ for topic in topic_list:
         .strip("' ")
     )
     with open(f"{language.lower()}/{renamed_topic.lower()}.md", "a") as the_file:
-        the_file.write(f"---\n")
-        the_file.write(f"id: {renamed_topic.lower()}\n")
-        the_file.write(f"title: {capped_last_word}\n")
-        the_file.write(f"sidebar_label: {sidebar_id.capitalize().strip()}\n")
-        the_file.write(f"sidebar_postiong: {counter}\n")
-        the_file.write("description:\n")
+        the_file.write(
+            f"""---
+id: {renamed_topic.lower()}
+title: {capped_last_word}
+sidebar_label: {sidebar_id.capitalize().strip()}
+sidebar_postiong: {counter}
+description: {sidebar_id.capitalize().strip()}\n"""
+        )
         the_file.write(
             f"""tags:
     - developer-guide
@@ -39,12 +50,15 @@ for topic in topic_list:
 ---\n"""
         )
 
-with open(f"{language.lower()}/index.md", "w") as index:
+    with open(f"{language.lower()}/index.md", "a") as index:
+        index.write(f"""- [{capped_last_word}]({renamed_topic.lower()})\n""")
+
+with open(f"{language.lower()}/overview.md", "w") as index:
     index.write(
         f"""---
-id: index
+id: overview
 title: How to use the Temporal {language.capitalize().strip()} SDK
-sidebar_label:
+sidebar_label: Temporal {language.capitalize()} SDK
 description: Add the Temporal {language.capitalize()} SDK to your project.
 tags:
     - developer-guide
