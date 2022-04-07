@@ -93,8 +93,8 @@ git clone git@github.com:temporalio/sdk-{language}.git
 You can find a complete list of executable code samples in the [samples library](/docs/samples-library/#{language}), which includes Temporal {language.capitalize()} SDK code samples from the [temporalio/samples-{language}](https://github.com/temporalio/samples-{language}) repo.
 Additionally, each of the {language.capitalize()} SDK Tutorials is backed by a fully executable template application.
 
-### Where is the Go SDK technical reference?
+### Where is the {language.capitalize()} SDK technical reference?
 
-The [Temporal {language.capitalize()} SDK API reference](URL_INPUT) is published on [INPUT](URL_INPUT)
+The [Temporal {language.capitalize()} SDK API reference](URL_INPUT) is published on [INPUT](URL_INPUT).
 """
     )
