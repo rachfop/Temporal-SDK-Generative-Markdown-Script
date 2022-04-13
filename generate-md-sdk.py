@@ -22,7 +22,9 @@ topic_list = open("topic-list.txt").read().split(",")
 topic_list.sort()
 counter = 2
 for topic in topic_list:
-    renamed_topic = str(topic).replace("go", language).replace("'", "").replace(" ", "")
+    renamed_topic = (
+        str(topic).replace("go", language).replace("'", "").replace(" ", "").strip()
+    )
     capped_last_word = cap_last_word(renamed_topic.replace("-", " "))
     counter += 1
     sidebar_id = (
@@ -38,9 +40,9 @@ for topic in topic_list:
             f"""---
 id: {renamed_topic.lower()}
 title: {capped_last_word}
-sidebar_label: {sidebar_id.capitalize().strip()}
+sidebar_label: {sidebar_id.replace("'", "").strip().capitalize()}
 sidebar_postiong: {counter}
-description: {sidebar_id.capitalize().strip()}\n"""
+description: {sidebar_id.replace("'", "").strip().capitalize()}\n"""
         )
         the_file.write(
             f"""tags:
