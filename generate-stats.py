@@ -2,7 +2,7 @@ import os
 import shutil
 from pathlib import Path
 from webbrowser import get
-
+from datetime import datetime
 import matplotlib.pyplot as plt
 import pandas as pd
 import requests
@@ -96,8 +96,16 @@ count_lines("results/links-swift.md")
 count_lines("results/links-php.md")
 count_lines("results/links-typescript.md")
 
+# print today's date in month, day, year format
+date_generated = datetime.now().strftime("%B %d, %Y")
 
-# Reading the csv file and plotting a bar graph
+# Reading the csv file and plotting a bar graph and add title and labels
 df = pd.read_csv("results/stats-results.csv", names=["language", "percent"])
-df.plot.bar(x="language", y="percent", rot=0, color="blue")
+df.plot.bar(
+    x="language",
+    y="percent",
+    rot=0,
+    color="blue",
+    title=f"Percentage of completion for {date_generated}",
+)
 plt.show()
