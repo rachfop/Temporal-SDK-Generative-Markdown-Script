@@ -14,7 +14,8 @@ Install python3:
 brew install python
 ```
 
-This script uses Python's standard library. No other installation is required.
+This script uses Python's standard library. 
+No other installation is required.
 
 ## Usage
 
