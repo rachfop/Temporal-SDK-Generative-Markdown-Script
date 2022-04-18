@@ -20,7 +20,7 @@ class Language:
     pass
 
     def __init__(self, lang):
-        self.lang = lang
+        self.lang: str = lang
 
 
 go = Language("go")
@@ -33,13 +33,13 @@ php = Language("php")
 typescript = Language("typescript")
 
 
-def get_url_list(lang):
+def get_url_list(lang: str) -> list:
     """
     It gets the HTML of the docs page, parses it, and then writes the links to a file
 
     :param lang: The language you want to scrape
     """
-    url = f"https://docs.temporal.io/docs/{lang}/"
+    url: str = f"https://docs.temporal.io/docs/{lang}/"
     grab = requests.get(url)
     soup = BeautifulSoup(grab.text, "html.parser")
     for link in soup.find_all("a"):
@@ -72,7 +72,7 @@ def count_lines(file):
     """
     try:
         with open(file, "r") as fp:
-            num_lines = sum(1 for line in fp if line.rstrip())
+            num_lines: str = sum(1 for line in fp if line.rstrip())
         print(
             f"{file.split('/links-', 1)[1]}",
             (round(num_lines / 31, 2) * 100),

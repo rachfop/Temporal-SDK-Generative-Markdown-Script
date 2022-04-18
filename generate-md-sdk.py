@@ -1,6 +1,6 @@
 import os
 
-language = input("Enter the name of the coding language:").strip()
+language: str = input("Enter the name of the coding language:").strip()
 if not os.path.exists(language):
     os.makedirs(language)
 
@@ -18,7 +18,7 @@ title: {language.capitalize()} SDK
 - [Getting started](overview)\n"""
     )
 
-topic_list = open("topic-list.txt").read().split(",")
+topic_list: list = open("topic-list.txt").read().split(",")
 topic_list.sort()
 counter = 2
 for topic in topic_list:
